@@ -712,18 +712,28 @@
       <img src="images/img10.jpg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;">
       <div class="swiper-caption">Team work makes dreamwork</div>
     </div>
-
   </div>
   <div class="swiper-pagination"></div>
 </div>
+
 <style>
-.swiper-slide img {
-  width: 100%;  /* Image will fill the slide's width */
-  height: 100%; /* Image will fill the slide's height */
-  object-fit: cover; /* Image will cover the entire area, may be cropped */
+.swiper-slide {
+  position: relative; /* For caption positioning */
+  opacity: 0; /* Initially hide all slides */
+  transition: opacity 1s ease-in-out; /* Smooth fade transition */
 }
 
-.swiper-caption {
+.swiper-slide.swiper-slide-active {
+  opacity: 1; /* Show active slide */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-caption { /* Caption styles */
   position: absolute;
   bottom: 10px;
   left: 0;
@@ -734,11 +744,7 @@
   text-align: center;
 }
 
-.swiper-slide {
-  position: relative; /* Needed for absolute positioning of the caption */
-}
-
-/* If you want the carousel to take up the full viewport height: */
+/* Full-screen carousel (optional - remove if not needed) */
 html, body {
   height: 100%;
   margin: 0;
@@ -760,14 +766,23 @@ html, body {
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.swiper', {
-    loop: true,
+    loop: true, // Keep the loop
     autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
+      delay: 5000, // Adjust the delay (in milliseconds) as needed
+      disableOnInteraction: false, // Keep autoplay even if user interacts
     },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
+    },
+    // Smooth transitions:
+    on: {
+      slideChangeTransitionStart: function() {
+        swiper.slides.forEach(slide => slide.classList.remove('swiper-slide-active'));
+      },
+      slideChangeTransitionEnd: function() {
+        swiper.slides[swiper.activeIndex].classList.add('swiper-slide-active');
+      },
     },
   });
 </script>
