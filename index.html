@@ -37,7 +37,7 @@
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -674,26 +674,103 @@
     </div>
   </div>
 </div>
-<div class="section" id="gallery">
-  <div class="container cc-gallery">
-    <div class="h4 mb-4 text-center title">Gallery</div>
-    <div class="card" data-aos="zoom-in">
-      <div id="cc-Indicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-interval="5000">
-            <img src="images/project-1.jpg" alt="Matthew R" style="max-width: 500px; max-height: 500px;">
-          </div>
-          <div class="carousel-item" data-interval="5000">
-            <img src="images/project-2.jpg" alt="Tarun J" style="max-width: 500px; max-height: 500px;">
-          </div>
-          <div class="carousel-item" data-interval="5000">
-            <img src="images/project-3.jpg" alt="Aaron F" style="max-width: 500px; max-height: 500px;">
-          </div>
-        </div>
-      </div>
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="images/img1.jpg" alt="Making Memories Together" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Team Work make Dream Work at Commlab India</div>
     </div>
+    <div class="swiper-slide">
+      <img src="images/img2.jpg" alt="My second business trip to USA" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">My Second Business Trip</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img3.jpg" alt="My " style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">My second business trip with my teammate</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img4.jpg" alt="Team Celebrations at Commlab India" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Celebrating together!</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img5.jpg" alt="Happy Customer at Underwriters Laboratory" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Happy clients, my priority.</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img6.jpg" alt="First trip with the best team! #CommLabIndia" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">First trip with the best team!</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img7.jpg" alt="Happy Cusomters at Raytheon Professional Services" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Exceeding Expectations for Raytheon</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img8.jpg" alt="Met with stakeholders at Mettler Toledo" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Knowledgeable stakeholders, successful outcomes</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="images/img10.jpg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="swiper-caption">Team work makes dreamwork</div>
+    </div>
+
   </div>
+  <div class="swiper-pagination"></div>
 </div>
+<style>
+.swiper-slide img {
+  width: 100%;  /* Image will fill the slide's width */
+  height: 100%; /* Image will fill the slide's height */
+  object-fit: cover; /* Image will cover the entire area, may be cropped */
+}
+
+.swiper-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.swiper-slide {
+  position: relative; /* Needed for absolute positioning of the caption */
+}
+
+/* If you want the carousel to take up the full viewport height: */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.swiper {
+  height: 100%;
+}
+
+.swiper-wrapper {
+  height: 100%;
+}
+
+.swiper-slide {
+  height: 100%;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
 <div class="section" id="contact">
   <div class="cc-contact-information" style="background-image: url('images/staticmap.png')">
     <div class="container">
