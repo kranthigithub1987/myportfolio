@@ -719,13 +719,19 @@
 
 <style>
 .swiper-slide {
-  position: relative; /* For caption positioning */
-  opacity: 0; /* Initially hide all slides */
-  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transform: translateX(100%);
 }
 
 .swiper-slide.swiper-slide-active {
-  opacity: 1; /* Show active slide */
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.swiper-slide.swiper-slide-prev {
+  transform: translateX(-100%);
 }
 
 .swiper-slide img {
@@ -734,7 +740,7 @@
   object-fit: cover;
 }
 
-.swiper-caption { /* Caption styles */
+.swiper-caption {
   position: absolute;
   bottom: 10px;
   left: 0;
@@ -745,7 +751,6 @@
   text-align: center;
 }
 
-/* Full-screen carousel (optional - remove if not needed) */
 html, body {
   height: 100%;
   margin: 0;
@@ -764,25 +769,26 @@ html, body {
 }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.swiper', {
-    loop: true, // Keep the loop
+    loop: true,
     autoplay: {
-      delay: 5000, // Adjust the delay (in milliseconds) as needed
-      disableOnInteraction: false, // Keep autoplay even if user interacts
+      delay: 5000,
+      disableOnInteraction: false,
     },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
     },
-    // Smooth transitions:
     on: {
       slideChangeTransitionStart: function() {
-        swiper.slides.forEach(slide => slide.classList.remove('swiper-slide-active'));
+        swiper.slides.forEach(slide => slide.classList.remove('swiper-slide-active', 'swiper-slide-prev'));
       },
       slideChangeTransitionEnd: function() {
         swiper.slides[swiper.activeIndex].classList.add('swiper-slide-active');
+        if (swiper.previousIndex !== undefined) {
+          swiper.slides[swiper.previousIndex].classList.add('swiper-slide-prev');
+        }
       },
     },
   });
